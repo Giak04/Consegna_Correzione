@@ -142,9 +142,9 @@ def Temp(L, T, A):
     return N
 
 def find_T(L, N):
-
+    #Il problema risiedeva nei bounds, che però sono necessari per evitare un comportamento anomalo
     pnames=['T', 'A']
-    params, params_covariance = optimize.curve_fit(Temp, L, N, p0=[4e3, 1e-25], maxfev=1000, bounds=((1, 3e-32),(3e4, 1e-8)))
+    params, params_covariance = optimize.curve_fit(Temp, L, N, p0=[7e3, 1e-25], maxfev=1000, bounds=((1, 3e-32),(3e4, 1e-8)))
     Tem=params[0]
     Temerr=params_covariance.diagonal()[0]
     return (Tem, Temerr)
